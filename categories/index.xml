@@ -6,10 +6,19 @@
     <description>Recent content in Categories on BestYuan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
-    <lastBuildDate>Sun, 13 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://lllllyuan.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我不会前端吖</title>
+      <link>https://lllllyuan.github.io/categories/%E6%88%91%E4%B8%8D%E4%BC%9A%E5%89%8D%E7%AB%AF%E5%90%96/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lllllyuan.github.io/categories/%E6%88%91%E4%B8%8D%E4%BC%9A%E5%89%8D%E7%AB%AF%E5%90%96/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>RecordMblog</title>
