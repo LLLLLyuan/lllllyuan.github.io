@@ -7,24 +7,24 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="BestYuan">
-  <meta name="description" content="知己知彼，所向无敌">
+  <meta name="description" content="量子力学法教你爬取知乎数据">
   
-  <meta property="og:title" content="什么是rotli压缩" />
-<meta property="og:description" content="知己知彼，所向无敌" />
+  <meta property="og:title" content="知乎爬虫(一)——requests篇" />
+<meta property="og:description" content="量子力学法教你爬取知乎数据" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lllllyuan.github.io/blog/2019-10/%E4%BB%80%E4%B9%88%E6%98%AFrotli%E5%8E%8B%E7%BC%A9/" />
-<meta property="article:published_time" content="2019-10-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-10-15T00:00:00+00:00" />
+<meta property="og:url" content="https://lllllyuan.github.io/blog/2019-10/%E7%9F%A5%E4%B9%8E%E7%88%AC%E8%99%AB%E4%B8%80requests%E7%AF%87/" />
+<meta property="article:published_time" content="2019-10-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-16T00:00:00+00:00" />
 
 
 
   <title>
   
-       什么是rotli压缩 | BestYuan 
+       知乎爬虫(一)——requests篇 | BestYuan 
   
   </title>
 
-  <link rel="canonical" href="https://lllllyuan.github.io/blog/2019-10/%E4%BB%80%E4%B9%88%E6%98%AFrotli%E5%8E%8B%E7%BC%A9/">
+  <link rel="canonical" href="https://lllllyuan.github.io/blog/2019-10/%E7%9F%A5%E4%B9%8E%E7%88%AC%E8%99%AB%E4%B8%80requests%E7%AF%87/">
 
   
   
@@ -327,27 +327,23 @@
           <div class="post-header text-center" >
   <ul class="post-meta li-x">
     
-      
-        <li><a href="https://lllllyuan.github.io/categories/%E6%88%91%E4%B8%8D%E4%BC%9A%E5%89%8D%E7%AB%AF%E5%90%96"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 我不会前端吖 </a></li>
-      
-    
     
       
-        <li><a href="https://lllllyuan.github.io/series/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>前端小知识</a></li>
+        <li><a href="https://lllllyuan.github.io/series/%E7%88%AC%E8%99%AB%E8%B8%A9%E5%9D%91%E8%AE%B0"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>爬虫踩坑记</a></li>
       
     
   </ul>
 
-  <div class="px-4 post-heading">什么是rotli压缩</div>
+  <div class="px-4 post-heading">知乎爬虫(一)——requests篇</div>
 
   <ul class="post-meta li-x mt-1">
     
-      <li>Oct 15, 2019</li>
+      <li>Oct 16, 2019</li>
     
 
     
       <li class="middot"></li>
-      <li>2 minutes read</li>
+      <li>4 minutes read</li>
       <li> This content have been read <span id="busuanzi_value_page_pv"></span> times.</li>
     
   </ul>
@@ -358,77 +354,240 @@
            
             
 
-<p><center>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=5248615&auto=1&height=32"></iframe>
-</center></p>
+<p>最近有关于&rdquo;量子波动速读&rdquo;的方法，不知道大家知道不知道。</p>
 
-<p>准备写这篇文章的时候已经23点27分了，不是很困，回想起晚上遇到的一个bug，记录下我和<code>Brotli</code>的孽缘</p>
+<p>传说只要学会了，来自宇宙的神秘力量就能让你拥有一种神奇的能力————<strong>用1-5分钟，一直刷新本页面，你就能学会爬取知乎数据，并且是可以把代码内容完整还原的那种！</strong></p>
 
-<h2 id="前言-什么是brotli">前言 —— 什么是Brotli ？</h2>
+<p>至于你信不信，反正我是不信，我在想这年头这种忽悠人的法子都能赚钱，我要不要转行？</p>
 
-<p>Brotli是一个Jyrki Alakuijala和Zoltán Szabadka开发的开源数据压缩程序库。Brotli基于LZ77算法的一个现代变体、霍夫曼编码和二阶上下文建模。</p>
+<p>言归正传，今天记录一下前段时间写的<code>知乎爬虫</code>，用<code>requests</code>写个教程。</p>
 
-<p>在Chrome、Opera和Firefox中，它已被用于加速万维网的传输速度。类似Google的压缩算法zopfli，brotli这个名字来自瑞士的烘培产品brötli。</p>
+<h2 id="环境准备">环境准备</h2>
 
-<p>以上内容全部来自于<a href="https://zh.wikipedia.org/wiki/Brotli">维基百科</a>。</p>
+<p><code>Python 3.7</code>（本人版本）</p>
 
-<p>一言以蔽之 ———— <code>一种用于web传输的压缩算法</code>。</p>
+<p><code>Pypi</code> ：<em>requests</em> 、<em>pandas</em></p>
 
-<h2 id="有什么用">有什么用 ?</h2>
-
-<p>也许前端开发对 <code>Brotli</code> 比较少见，但是对 <code>deflate</code>、<code>gzip</code> 压缩肯定是知道的。</p>
-
-<p>一个网站用 gzip 和不用 gzip 效果很明显，打开速度能提高<code>30%</code>以上！</p>
-
-<p>而 Brotli 又能保持与 gzip 差不多的解压速度，而且还比<code>gzip</code>多<code>20%</code>左右的压缩率</p>
-
-<p>就是说它好呗</p>
-
-<p>前端生产环境中将js、css、图片等文件进行压缩的好处显而易见，通过减少数据传输量减小传输时间，节省服务器网络带宽，提高前端性能。</p>
-
-<p>就好比我的博客打开很慢，就是因为没有用压缩 🐷</p>
-
-<p>大部分浏览器都支持 <code>Brotli</code> 算法，除了<code>IE</code></p>
-
-<p>所以到底有啥用？—————— <strong>省流量啊</strong>🐷</p>
-
-<h2 id="如何判断网页是否支持-brotli">如何判断网页是否支持 Brotli</h2>
-
-<p>很简单，一般用<code>Chrome</code>或者<code>Firefox</code>按<code>F12</code>打开<code>开发者工具</code>，切换到<code>Network</code>，刷新页面，点击一个加载出来的页面，然后查找一个参数 <code>content-encoding</code></p>
-
-<p>如果显示的是</p>
-
-<pre><code class="language-html">content-encoding: br
+<pre><code class="language-bash">$ pip install requests pandas
 </code></pre>
 
-<p>那么这个网页就是用的 brotli
-- 浏览器请求数据时，通过 Accept-Encoding 说明自己可以接受的压缩方法</p>
+<h2 id="分析">分析</h2>
+
+<p>孔子曰：不服就干，正面刚！</p>
+
+<p>于是乎，很多人就去<a href="https://www.zhihu.com/">知乎首页</a>搞人家的验证码了，麻烦不麻烦，封你号都不亏！</p>
+
+<p><a href="https://www.zhihu.com/search?type=content&amp;q=">从这个入口进</a>，初极狭，才通人，复行数十步，豁然开朗！</p>
+
+<p>嗯。。随便点个热搜词，国际惯例，用Chrome按<code>F12</code>后点<code>network</code>，<code>刷新下页面</code>，看看数据是怎么加载的。</p>
+
+<p>嘿嘿，找到了！😆</p>
+
+<p><img src="https://lllllyuan.github.io/images/blog/2019-10/F12.png" alt="F12" /></p>
+
+<p>很简单嘛，用post-man<code>不带</code>*header*看下</p>
+
+<p>结果很正常!</p>
+
+<p>再用post-man的一键生成代码，用<code>requests</code>访问试试</p>
+
+<p><img src="https://lllllyuan.github.io/images/blog/2019-10/response.png" alt="response" /></p>
+
+<p>这么少？感觉不太对，一看源代码发现，好家伙，数据是<code>json/text类型</code>返回的，而且都混在一起放在<code>&lt;script&gt;</code>标签里！</p>
+
+<p>既然是<code>js</code>加载出来的，那么就一定有返回给他的<code>json数据</code>,下拉页面，知乎会继续用瀑布流加载数据，然后会发现另一个 url !</p>
+
+<p><img src="https://lllllyuan.github.io/images/blog/2019-10/zhihu_api.png" alt="zhihu_api" /></p>
+
+<p>难道这就是传说中的 <code>A</code>——<code>P</code>——<code>I</code> !</p>
+
+<p>知乎api都找出来了，后面的事情就容易多了，继续post-man，不带header，请求正常。继续一键copy，生成代码</p>
+
+<pre><code class="language-python">url = &quot;https://www.zhihu.com/api/v4/search_v3&quot;
+headers = {
+        'User-Agent': &quot;PostmanRuntime/7.18.0&quot;,
+        'Accept': &quot;*/*&quot;,
+        'Cache-Control': &quot;no-cache&quot;,
+        'Host': &quot;www.zhihu.com&quot;,
+        'Accept-Encoding': &quot;gzip, deflate&quot;,
+        'Connection': &quot;keep-alive&quot;,
+        'cache-control': &quot;no-cache&quot;
+    }
+querystring = {&quot;t&quot;: &quot;general&quot;,
+               &quot;q&quot;: &quot;英雄联盟手游&quot;,
+               &quot;correction&quot;: &quot;1&quot;,
+               &quot;offset&quot;: &quot;20&quot;,
+               &quot;limit&quot;: &quot;20&quot;,
+               &quot;lc_idx&quot;: &quot;26&quot;,
+               &quot;show_all_topics&quot;: &quot;0&quot;,
+               &quot;search_hash_id&quot;: &quot;9cbfd9be48e4c5fde0bfa668283066cd&quot;,
+               &quot;vertical_info&quot;: &quot;0%2C1%2C1%2C0%2C0%2C0%2C0%2C0%2C1%2C1&quot;
+               }
+response = requests.request(&quot;GET&quot;, url, headers=headers, params=querystring)
+</code></pre>
+
+<p>继续调试发现，有几个参数是可以改动的：</p>
 
 <ul>
-<li><p>服务端接收到请求后，选取 Accept-Encoding 中的一种对响应数据进行压缩</p></li>
-
-<li><p>服务端返回响应数据时，在 Content-Encoding 字段中说明数据的压缩方式</p></li>
-
-<li><p>浏览器接收到响应数据后根据 Content-Encoding 对结果进行解压</p></li>
+<li><code>t</code>: 控制爬取栏目，</li>
+<li><code>q</code>: 搜索关键词</li>
+<li><code>correction</code> : 0的话会把热点信息加上，1没有</li>
+<li><code>offset</code> : 相当于起始页，</li>
+<li><code>limit</code> : 每页显示数据条数</li>
+<li><code>lc_idx</code> : 会和<code>offset</code>一起变化，每次增加数量为上一页的<code>offset</code>数量，去掉没啥影响</li>
+<li><code>show_all_topics</code> : 显示所有话题，没啥用，可以砍掉</li>
+<li><code>search_hash_id</code> : 斩</li>
+<li><code>vertical_info</code> : 也斩</li>
 </ul>
 
+<p>换个UA，最后请求部分代码长这样</p>
+
+<pre><code class="language-python">url = &quot;https://www.zhihu.com/api/v4/search_v3&quot;
+headers = {
+    'User-Agent': &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36&quot;,
+    'Accept': &quot;*/*&quot;,
+    'Cache-Control': &quot;no-cache&quot;,
+    'Host': &quot;www.zhihu.com&quot;,
+    'Accept-Encoding': &quot;gzip, deflate&quot;,
+    'Connection': &quot;keep-alive&quot;,
+    'cache-control': &quot;no-cache&quot;
+}
+querystring = {&quot;t&quot;: &quot;general&quot;,
+               &quot;q&quot;: &quot;英雄联盟手游&quot;,
+               &quot;correction&quot;: &quot;0&quot;,
+               &quot;offset&quot;: &quot;20&quot;,
+               &quot;limit&quot;: &quot;20&quot;,
+               }
+response = requests.request(&quot;GET&quot;, url, headers=headers, params=querystring)
+</code></pre>
+
+<p>那么问题来了，如何一次性让爬虫去批量的爬呢？</p>
+
+<p>有两个方法：</p>
+
+<ul>
+<li><p>1、我们可以发现json中<code>next</code>的值就是 <code>下一页的url</code> ，如果此页是最后一页的话，<code>isfeed</code>的值是 <em>True</em> ，如果不是最后一页的话就是 <em>false</em> 。</p>
+
+<p><img src="https://lllllyuan.github.io/images/blog/2019-10/下一页.png" alt="下一页" /></p>
+
+<p>思路：</p>
+
+<ul>
+<li>请求第一次，判断是否有下一页，保存返回结果并获取下一次的url<br /></li>
+<li>循环请求下一页，判断是否有下一页，保存返回结果并获取下一次的url</li>
+<li>请求到最后一页没有下一页url，保存返回结果，存储数据</li>
+</ul>
+
+<p>代码片段：</p>
+
+<pre><code class="language-Python">class ZhihuSpider():
+    
+    def __init__(self,search_key,file_path):
+        response = self.get_response(search_key)
+        dict_data = self.json_to_dict(response.text)
+        result_list = []
+        url, self.result_list = self.get_result(dict_data,result_list)
+        while url:
+            response = requests.get(url, headers=self.headers)
+            dict_data = self.json_to_dict(response.text)
+            url, result_list = self.get_result(dict_data, self.result_list)
+        self.sava_to_excel(file_path)
+</code></pre></li>
+
+<li><p>2、循环改变<code>offset</code>和值，批量构成url。</p>
+
+<p>这个很简单，先循环构造url列表，然后循环用requests请求，可以自己实现一下。</p></li>
+</ul>
+
+<p>相比两个方法，第一个方法第一次写的慢些，后面如果还使用的话会很快，第二个方法虽然很快捷，但是在不知道数据量究竟多少的情况下，直接写死有点太<code>莽</code>了。（虽然我一开始用的第二种方法😹）</p>
+
+<h2 id="完整代码">完整代码</h2>
+
+<p>最后附上完整代码</p>
+
+<pre><code class="language-python">class ZhihuSpider():
+
+    def __init__(self,search_key,file_path):
+        response = self.get_response(search_key)
+        dict_data = self.json_to_dict(response.text)
+        result_list = []
+        url, self.result_list = self.get_result(dict_data,result_list)
+        while url:
+            response = requests.get(url, headers=self.headers)
+            dict_data = self.json_to_dict(response.text)
+            url, result_list = self.get_result(dict_data, self.result_list)
+        self.sava_to_excel(file_path)
+
+    def get_response(self, search_key):
+        url = &quot;https://www.zhihu.com/api/v4/search_v3&quot;
+        self.headers = {
+            'User-Agent': &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36&quot;,
+            'Accept': &quot;*/*&quot;,
+            'Cache-Control': &quot;no-cache&quot;,
+            'Accept-Encoding': &quot;gzip&quot;,
+            'Connection': &quot;keep-alive&quot;,
+            'cache-control': &quot;no-cache&quot;
+        }
+        querystring = {&quot;t&quot;: &quot;general&quot;,
+                       &quot;q&quot;: search_key,
+                       &quot;correction&quot;: &quot;1&quot;,
+                       &quot;offset&quot;: &quot;20&quot;,
+                       &quot;limit&quot;: &quot;20&quot;,
+                       }
+        response = requests.request(&quot;GET&quot;, url, headers=self.headers, params=querystring)
+        response.encoding = response.apparent_encoding
+        return response
+
+    def json_to_dict(self, json_data):
+        dict_data = json.loads(json_data, encoding=&quot;utf_8_sig&quot;)
+        return dict_data
+
+    def get_result(self, dict_data, result_list):
+        if dict_data['paging']['is_end'] is False:
+            next_url = dict_data['paging']['next']
+        else:
+            next_url = None
+        for one in dict_data['data']:
+            try:
+                if one[&quot;type&quot;] == &quot;search_result&quot;:     # 知乎有时候会有其他推荐，类型不是search_result
+                    one_info = {}
+                    title = one[&quot;highlight&quot;][&quot;title&quot;].replace(&quot;&lt;em&gt;&quot;, &quot;&quot;).replace(&quot;&lt;/em&gt;&quot;, &quot;&quot;).strip()
+                    question_id = one[&quot;object&quot;][&quot;question&quot;]['id']
+                    answer_id = one[&quot;object&quot;]['id']
+                    description = one[&quot;object&quot;]['excerpt'].replace(&quot;&lt;em&gt;&quot;, &quot;&quot;).replace(&quot;&lt;/em&gt;&quot;, &quot;&quot;).strip() + &quot;...&quot;
+                    href = f&quot;http://www.zhihu.com/question/{question_id}/answer/{answer_id}&quot;
+                    create_date = one[&quot;object&quot;]['created_time']
+                    one_info['url'] = href
+                    one_info['create_date'] = datetime.fromtimestamp(create_date)
+                    one_info['title'] = title
+                    one_info['description'] = description
+                    result_list.append(one_info)
+                    print(one_info)
+            except Exception as e:
+                # print(str(e))
+                pass
+        return next_url,result_list
+
+    def sava_to_excel(self, file_path):
+        df = pandas.DataFrame(self.result_list)
+        df.to_csv(file_path, index=False, encoding='utf-8')
+        print(&quot;save ok&quot;)
+
+if __name__ == '__main__':
+    search_key = &quot;英雄联盟手游&quot;
+    file_path = &quot;zhuhu.csv&quot;
+    ZhihuSpider(search_key=search_key,file_path=file_path)
+</code></pre>
+
+<p>代码文件在<a href="https://github.com/LLLLLyuan/zhihuspider">我的github</a>上，不懂来问</p>
+
+<p>如果你遇到下图类似的乱码问题</p>
+
+<p><img src="https://lllllyuan.github.io/images/blog/2019-10/乱码.png" alt="乱码" /></p>
+
 <blockquote>
-<p>如果服务器没有对响应数据进行压缩，则不返回 Content-Encoding，浏览器也不进行解压</p>
+<p>后面再告诉你怎么解决，嘿嘿：）</p>
 </blockquote>
-
-<p>一个大的网站，肯定是要使用压缩方式的，不然它的<code>性</code><del><code>功</code></del><code>能</code>有大大的问题</p>
-
-<p>目前我所知道的网站压缩方式为 brotli 的有：<a href="https://www.google.com/">Google</a> 、 <a href="https://www.bing.com/">Bing</a> 、<a href="https://www.zhihu.com">知乎</a></p>
-
-<p>为什么我知道呢？因为我写爬虫遇到了坑💩</p>
-
-<p>所以为什么我和<code>Brotli</code>有一段孽缘呢，因为它让我又爱又恨</p>
-
-<p>好久没写爬虫了，准备抽个时间写个<code>知乎爬虫</code>的教程</p>
-
-<p>听着摇篮曲，有点困了。。。</p>
-
-<p>嗯，Brotli ，我们下次见👋</p>
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -462,13 +621,10 @@
   <li class="pr-0"><a href="https://lllllyuan.github.io/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-      <li><a href="https://lllllyuan.github.io/tags/%E5%89%8D%E7%AB%AF" role="button">前端 </a></li>
+      <li><a href="https://lllllyuan.github.io/tags/python" role="button">Python </a></li>
       
     
-      <li><a href="https://lllllyuan.github.io/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD" role="button">前端性能 </a></li>
-      
-    
-      <li><a href="https://lllllyuan.github.io/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95" role="button">压缩算法 </a></li>
+      <li><a href="https://lllllyuan.github.io/tags/%E7%88%AC%E8%99%AB" role="button">爬虫 </a></li>
       
     
   </div>
@@ -482,10 +638,10 @@
           <div class="row pt-3">
             <div class="col-md-6">
               
-                <a href=https://lllllyuan.github.io/blog/2019-10/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%8A%9F%E8%83%BD/ class="post-meta">Previous
+                <a href=https://lllllyuan.github.io/blog/2019-10/%E4%BB%80%E4%B9%88%E6%98%AFbrotli%E5%8E%8B%E7%BC%A9/ class="post-meta">Previous
                   <div class="pt-2 pb-5 d-flex">
                     <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
-                    <span>给Hugo博客添加(网易云)音乐功能</span>
+                    <span>什么是Brotli压缩</span>
                   </div>
                 </a>
               
@@ -549,8 +705,8 @@
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%89%8d%e8%a8%80-%e4%bb%80%e4%b9%88%e6%98%afbrotli">
-												 前言 —— 什么是Brotli ？
+						 					<a class="nav-link" href="#%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87">
+												 环境准备
 											</a>
 										</li>
 						 
@@ -571,8 +727,8 @@
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e6%9c%89%e4%bb%80%e4%b9%88%e7%94%a8">
-												 有什么用 ?
+						 					<a class="nav-link" href="#%e5%88%86%e6%9e%90">
+												 分析
 											</a>
 										</li>
 						 
@@ -593,8 +749,8 @@
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#%e5%a6%82%e4%bd%95%e5%88%a4%e6%96%ad%e7%bd%91%e9%a1%b5%e6%98%af%e5%90%a6%e6%94%af%e6%8c%81-brotli">
-												 如何判断网页是否支持 Brotli
+						 					<a class="nav-link" href="#%e5%ae%8c%e6%95%b4%e4%bb%a3%e7%a0%81">
+												 完整代码
 											</a>
 										</li>
 						 
