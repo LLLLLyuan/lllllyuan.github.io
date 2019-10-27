@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on BestYuan</title>
-    <link>https://lllllyuan.github.io/series/</link>
+    <link>https://bestyuan.fun/series/</link>
     <description>Recent content in Series on BestYuan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
     <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://lllllyuan.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bestyuan.fun/series/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>算法练习生</title>
-      <link>https://lllllyuan.github.io/series/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0%E7%94%9F/</link>
+      <link>https://bestyuan.fun/series/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0%E7%94%9F/</link>
       <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lllllyuan.github.io/series/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0%E7%94%9F/</guid>
+      <guid>https://bestyuan.fun/series/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0%E7%94%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>爬虫踩坑记</title>
-      <link>https://lllllyuan.github.io/series/%E7%88%AC%E8%99%AB%E8%B8%A9%E5%9D%91%E8%AE%B0/</link>
+      <link>https://bestyuan.fun/series/%E7%88%AC%E8%99%AB%E8%B8%A9%E5%9D%91%E8%AE%B0/</link>
       <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lllllyuan.github.io/series/%E7%88%AC%E8%99%AB%E8%B8%A9%E5%9D%91%E8%AE%B0/</guid>
+      <guid>https://bestyuan.fun/series/%E7%88%AC%E8%99%AB%E8%B8%A9%E5%9D%91%E8%AE%B0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>前端小知识</title>
-      <link>https://lllllyuan.github.io/series/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86/</link>
+      <link>https://bestyuan.fun/series/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lllllyuan.github.io/series/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86/</guid>
+      <guid>https://bestyuan.fun/series/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%9F%A5%E8%AF%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>我和我的blog</title>
-      <link>https://lllllyuan.github.io/series/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog/</link>
+      <link>https://bestyuan.fun/series/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog/</link>
       <pubDate>Sun, 13 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://lllllyuan.github.io/series/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog/</guid>
+      <guid>https://bestyuan.fun/series/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog/</guid>
       <description></description>
     </item>
     
