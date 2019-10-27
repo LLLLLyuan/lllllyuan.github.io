@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Algorithms on BestYuan</title>
+    <title>Algorithm on BestYuan</title>
     <link>https://lllllyuan.github.io/algorithm/</link>
-    <description>Recent content in Algorithms on BestYuan</description>
+    <description>Recent content in Algorithm on BestYuan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
-    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 27 Oct 2019 22:31:21 +0800</lastBuildDate>
     
 	<atom:link href="https://lllllyuan.github.io/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AcWing789题 ——数的范围（二分查找）</title>
+      <link>https://lllllyuan.github.io/algorithm/binarysearch_int/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lllllyuan.github.io/algorithm/binarysearch_int/</guid>
+      <description>算法日记3————二分查找(整数篇)</description>
+    </item>
+    
+    <item>
+      <title>AcWing790题——数的三次方根（二分查找）</title>
+      <link>https://lllllyuan.github.io/algorithm/binarysearch_double/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://lllllyuan.github.io/algorithm/binarysearch_double/</guid>
+      <description>算法日记4————二分查找(浮点篇)</description>
+    </item>
     
     <item>
       <title>AcWing787题 ——归并排序（Merge sort）</title>

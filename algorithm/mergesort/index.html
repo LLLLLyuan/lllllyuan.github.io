@@ -14,7 +14,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lllllyuan.github.io/algorithm/mergesort/" />
 <meta property="article:published_time" content="2019-10-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-10-24T00:00:00+00:00" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/quicksort/" />
+<meta property="article:modified_time" content="2019-10-24T00:00:00+00:00" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/binarysearch_int/" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/binarysearch_double/" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/quicksort/" />
 
 
 
@@ -431,13 +431,13 @@
 
 <p>归并分界点为 <code>n/2</code> 处，假设每次左右两端为<code>l</code>、<code>r</code>，那么分界点每次为<code>mid = (l + r ) / 2</code>。</p>
 
-<p>所以当分到不能再分的时候，也就是 <code>n / 2^n = 1</code> 的时候，分区结束，所以分区的<code>时间复杂度为log(n)</code>，也就是说要分log(n)次！</p>
+<p>所以当分到不能再分的时候，也就是 <code>n / 2^n = 1</code> 的时候，分区结束，所以分区的<strong>时间复杂度为\(log_2{n}\)</strong>，也就是说要分\(log_2{n}\)次！</p>
 
 <p>因为每分区完一次要比较一遍，所以每次分区后时间复杂度为<code>n</code>（第一次为n * 1 = n,第二次为 n/2 * 2 = n ，第三次为 n/4 * 4 = n …… 第n次为 1 * n = n）</p>
 
-<p>所以总的时间复杂度就为分区的次数*每次分区的比较次数，即 O(n*log(n)) = nlog(n)。</p>
+<p>所以总的时间复杂度就为分区的次数 X 每次分区的比较次数，即 O(n X \(log_2{n}\)) = \(nlog_2{n}\)。</p>
 
-<p><code>快排在理想状态下(分界点为n/2)</code>时间复杂度和归并一样都是O(nlogn)。</p>
+<p><code>快排在理想状态下(分界点为n/2)</code>时间复杂度和归并一样都是O(\(nlog_2{n}\))。</p>
 
 <h3 id="2-递归处理左右两个区间">2、递归处理左右两个区间</h3>
 
@@ -576,6 +576,12 @@ int main()
 <td align="center">first commit</td>
 <td align="center">2019-10-24</td>
 </tr>
+
+<tr>
+<td align="center">2.0</td>
+<td align="center">add mathematical formula display</td>
+<td align="center">2019-10-27</td>
+</tr>
 </tbody>
 </table>
 
@@ -622,23 +628,32 @@ int main()
             
             <div class="col-md-6 text-right" >
               
+                <a href=https://lllllyuan.github.io/algorithm/binarysearch_double/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>AcWing790题——数的三次方根（二分查找）</span>
+                  </div>
+
+
+
+                </a>
+              
             </div>
           </div>
           
          
           
-    
-    
-    <div class="post bg-white">
-      <script src="https://utteranc.es/client.js"
-            repo= "LLLLLyuan/lllllyuan.github.io"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-      </script>
-    </div>
-    
+
+<div class="post bg-white">
+  <script src="https://utteranc.es/client.js"
+        repo= "LLLLLyuan/lllllyuan.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+
 
 
         </div>

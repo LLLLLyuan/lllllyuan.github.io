@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AcWing on BestYuan</title>
-    <link>https://lllllyuan.github.io/tags/acwing/</link>
-    <description>Recent content in AcWing on BestYuan</description>
+    <title>二分查找 on BestYuan</title>
+    <link>https://lllllyuan.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</link>
+    <description>Recent content in 二分查找 on BestYuan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-Hans</language>
     <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://lllllyuan.github.io/tags/acwing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://lllllyuan.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -27,24 +27,6 @@
       
       <guid>https://lllllyuan.github.io/algorithm/binarysearch_double/</guid>
       <description>算法日记4————二分查找(浮点篇)</description>
-    </item>
-    
-    <item>
-      <title>AcWing787题 ——归并排序（Merge sort）</title>
-      <link>https://lllllyuan.github.io/algorithm/mergesort/</link>
-      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lllllyuan.github.io/algorithm/mergesort/</guid>
-      <description>算法日记2————归并排序</description>
-    </item>
-    
-    <item>
-      <title>AcWing785题 ——快速排序（Quick sort）</title>
-      <link>https://lllllyuan.github.io/algorithm/quicksort/</link>
-      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://lllllyuan.github.io/algorithm/quicksort/</guid>
-      <description>算法日记————快速排序</description>
     </item>
     
   </channel>

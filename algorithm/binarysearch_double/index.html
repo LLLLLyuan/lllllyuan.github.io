@@ -7,24 +7,24 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
   <meta name="author" content="BestYuan">
-  <meta name="description" content="弄了几天的博客，终于弄好了">
+  <meta name="description" content="算法日记4————二分查找(浮点篇)">
   
-  <meta property="og:title" content="我和我的blog" />
-<meta property="og:description" content="弄了几天的博客，终于弄好了" />
+  <meta property="og:title" content="AcWing790题——数的三次方根（二分查找）" />
+<meta property="og:description" content="算法日记4————二分查找(浮点篇)" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lllllyuan.github.io/blog/2019-10/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog/" />
-<meta property="article:published_time" content="2019-10-09T00:22:19+08:00" />
-<meta property="article:modified_time" content="2019-10-09T00:22:19+08:00" /><meta property="og:see_also" content="https://lllllyuan.github.io/blog/2019-10/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%8A%9F%E8%83%BD/" /><meta property="og:see_also" content="https://lllllyuan.github.io/blog/2019-10/%E7%BB%99hugo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0utterances%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" /><meta property="og:see_also" content="https://lllllyuan.github.io/blog/2019-10/%E6%95%99%E4%BD%A020%E5%88%86%E9%92%9F%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/" />
+<meta property="og:url" content="https://lllllyuan.github.io/algorithm/binarysearch_double/" />
+<meta property="article:published_time" content="2019-10-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-27T00:00:00+00:00" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/binarysearch_int/" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/mergesort/" /><meta property="og:see_also" content="https://lllllyuan.github.io/algorithm/quicksort/" />
 
 
 
   <title>
   
-       我和我的blog | BestYuan 
+       AcWing790题——数的三次方根（二分查找） | BestYuan 
   
   </title>
 
-  <link rel="canonical" href="https://lllllyuan.github.io/blog/2019-10/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog/">
+  <link rel="canonical" href="https://lllllyuan.github.io/algorithm/binarysearch_double/">
 
   
   
@@ -333,33 +333,29 @@
   <ul class="post-meta li-x">
     
       
-        <li><a href="https://lllllyuan.github.io/categories/recordmblog"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> RecordMblog </a></li>
+        <li><a href="https://lllllyuan.github.io/categories/%E7%AE%97%E6%B3%95"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 算法 </a></li>
       
     
     
       
-        <li><a href="https://lllllyuan.github.io/series/%E6%88%91%E5%92%8C%E6%88%91%E7%9A%84blog"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>我和我的blog</a></li>
+        <li><a href="https://lllllyuan.github.io/series/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0%E7%94%9F"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>算法练习生</a></li>
       
     
   </ul>
 
-  <div class="px-4 post-heading">我和我的blog</div>
+  <div class="px-4 post-heading">AcWing790题——数的三次方根（二分查找）</div>
 
   <ul class="post-meta li-x mt-1">
     
-      <li>Oct 9, 2019</li>
+      <li>Oct 27, 2019</li>
     
 
     
       <li class="middot"></li>
-      <li>One minute read</li>
+      <li>2 minutes read</li>
       <li> This content have been read <span id="busuanzi_value_page_pv"></span> times.</li>
     
   </ul>
-  
-    <div class="view">
-      <img src="https://lllllyuan.github.io/images/blog/2019-10/pig.jpg" />
-    </div>
   
 
 </div>
@@ -367,21 +363,117 @@
            
             
 
-<h2 id="me-and-my-blog">Me and my blog</h2>
+<h2 id="题目">题目</h2>
 
-<p>很早就有写个博客的冲动，一直到国庆才开始施行。</p>
+<p>给定一个浮点数n，求它的三次方根。</p>
 
-<p>先是买域名，之所以选这个域名是因为：<del>我喜欢</del><strong>便宜</strong>，一次性买了5年的。</p>
+<p><strong>输入格式</strong></p>
 
-<p>然后找框架，选来选去，最后决定用hugo搭建博客而没有用hexo（虽然hexo主题确实确实很好看），主要原因第一个是因为hugo快，无论是下载安装还是部署，第二个原因是想以后自己慢慢完善博客的相关功能，顺便学习下<code>Go</code>和<code>前端</code>。</p>
+<p>共一行，包含一个浮点数n。</p>
 
-<p>希望这里将是记录我成长的地方——撰写我的爬坑日记与记录生活中的点点滴滴。</p>
+<p><strong>输出格式</strong></p>
 
-<p>目前博客的功能正在一步一步完善（在学啦别急），会经常写一些内容放上来，希望有一起加油努力的小伙伴^_^</p>
+<p>共一行，包含一个浮点数，表示问题的解。</p>
 
-<blockquote>
-<p>I am BestYuan.</p>
-</blockquote>
+<p>注意，<strong>结果保留6位小数</strong>。</p>
+
+<p><strong>数据范围</strong></p>
+
+<p>−10000 ≤ n ≤ 10000</p>
+
+<p><strong>输入样例：</strong></p>
+
+<pre><code class="language-text">1000.00
+</code></pre>
+
+<p><strong>输出样例：</strong></p>
+
+<pre><code class="language-text">10.000000
+</code></pre>
+
+<h2 id="题目解读">题目解读</h2>
+
+<p>像这种求平方根、立方根等等，是典型的二分查找，需要注意的是题目的精度问题。</p>
+
+<h2 id="解题思路">解题思路</h2>
+
+<p><strong>1、确定开始的分界点，分为左右两个区域。</strong></p>
+
+<p><strong>2、判断分界点是否符合条件，若符合递归，若不符合换个区间递归</strong></p>
+
+<h2 id="解题步骤">解题步骤</h2>
+
+<h3 id="确定分界点">确定分界点</h3>
+
+<p>假设有一段左右两端为 l 、 r，的区间，则mid = (l+r)/2</p>
+
+<pre><code class="language-text">l          mid           r
+├——————————-┤————————————┤
+
+</code></pre>
+
+<p>因为是<strong>浮点数二分</strong>，不用管边界问题，每次 mid 都取（l+r）/ 2。</p>
+
+<h3 id="判断并更新区间">判断并更新区间</h3>
+
+<p>我们已知，初始时l = 0，r = 10 ，我们要求27的立方根，我们知道27的立方根是3，如下图</p>
+
+<pre><code class="language-text">l   3    mid=5          r
+├———┤—————-┤————————————┤
+
+</code></pre>
+
+<p>此时我们可以判断\(mid^3\) = 75 ，大于 27，那么下一次递归区间应该在[l,mid]之间。</p>
+
+<p>同理，若 \(mid^3\) &lt; 27 ，那么下次递归区间就应该是在[mid,r]之间。</p>
+
+<p>一直递归，直到递归的精度达到要求，停止递归。</p>
+
+<h2 id="代码实现">代码实现</h2>
+
+<pre><code class="language-C++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    double x;
+    cin &gt;&gt; x;
+
+    double l = -100, r = 100;   //题目输入的数字范围为−10000 ≤ n ≤ 10000 ,±100足够了，但是不能太小
+    while (r - l &gt; 1e-8)   //若左右两边区间的精度范围达到1e-8，此时精度完全足够，一般要比题目多2位
+    {
+        double mid = (l + r) / 2;   //递归取中点
+        if (mid * mid * mid &gt;= x) r = mid;  // 判断 x应在mid的哪一边
+        else l = mid;
+    }
+
+    printf(&quot;%.6lf\n&quot;, l); 
+    return 0;
+}
+</code></pre>
+
+<p>这个相较于整数二分而言非常简单，主要是不需要考虑边界问题，浮点数可以直接除，没有向下取整这个问题。</p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th align="center">Version</th>
+<th align="center">Action</th>
+<th align="center">Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">1.0</td>
+<td align="center">first commit</td>
+<td align="center">2019-10-27</td>
+</tr>
+</tbody>
+</table>
 
             
           </div>
@@ -395,13 +487,13 @@
   <li class="pr-0"><a href="https://lllllyuan.github.io/tags/"><i class="fas fa-tags"></i></a></li>
   <div class="tags-sm">
     
-      <li><a href="https://lllllyuan.github.io/tags/blog" role="button">blog </a></li>
+      <li><a href="https://lllllyuan.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE" role="button">二分查找 </a></li>
       
     
-      <li><a href="https://lllllyuan.github.io/tags/go" role="button">Go </a></li>
+      <li><a href="https://lllllyuan.github.io/tags/c&#43;&#43;" role="button">C&#43;&#43; </a></li>
       
     
-      <li><a href="https://lllllyuan.github.io/tags/hugo" role="button">hugo </a></li>
+      <li><a href="https://lllllyuan.github.io/tags/acwing" role="button">AcWing </a></li>
       
     
   </div>
@@ -415,14 +507,21 @@
           <div class="row pt-3">
             <div class="col-md-6">
               
+                <a href=https://lllllyuan.github.io/algorithm/mergesort/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>AcWing787题 ——归并排序（Merge sort）</span>
+                  </div>
+                </a>
+              
             </div>
             
             <div class="col-md-6 text-right" >
               
-                <a href=https://lllllyuan.github.io/blog/2019-10/%E6%95%99%E4%BD%A020%E5%88%86%E9%92%9F%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/ class="post-meta">Next
+                <a href=https://lllllyuan.github.io/algorithm/binarysearch_int/ class="post-meta">Next
                   <div class="pt-2 pb-5 flex-reverse">
                     <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
-                    <span>教你20分钟使用Hugo搭建自己的博客</span>
+                    <span>AcWing789题 ——数的范围（二分查找）</span>
                   </div>
 
 
@@ -484,8 +583,170 @@
 								
 
 										<li class="nav-item">
-						 					<a class="nav-link" href="#me-and-my-blog">
-												 Me and my blog
+						 					<a class="nav-link" href="#%e9%a2%98%e7%9b%ae">
+												 题目
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%a2%98%e7%9b%ae%e8%a7%a3%e8%af%bb">
+												 题目解读
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%a7%a3%e9%a2%98%e6%80%9d%e8%b7%af">
+												 解题思路
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%a7%a3%e9%a2%98%e6%ad%a5%e9%aa%a4">
+												 解题步骤
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%a1%ae%e5%ae%9a%e5%88%86%e7%95%8c%e7%82%b9">
+												 确定分界点
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%88%a4%e6%96%ad%e5%b9%b6%e6%9b%b4%e6%96%b0%e5%8c%ba%e9%97%b4">
+												 判断并更新区间
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bb%a3%e7%a0%81%e5%ae%9e%e7%8e%b0">
+												 代码实现
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
 											</a>
 										</li>
 						 
